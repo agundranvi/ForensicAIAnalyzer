@@ -1,0 +1,9 @@
+# AI configuration
+
+The app uses only `http://127.0.0.1:11434/api/chat`, model `cicc-agent:latest`. It does not modify the model, its Modelfile or installed Ollama settings. No external endpoint is configurable in the application. Model requests disable streaming and request a JSON schema with a 8192-token context, temperature 0.1, and 4096-token generation allowance. Settings are per-request. Existing custom model instructions remain installed; application instructions are supplied per request.
+
+Retrieval uses case-authorized FTS5 rows, never the entire extraction as a prompt. At most 60 candidate artifacts and 12 ranked selections are considered. The final prompt is capped at 3500 UTF-8 bytes including application instructions and query; each excerpt is capped at 1000 bytes and the model query at 800 bytes. Exact original questions are retained in query history. Queries are limited to 2000 characters at the API. Long questions are shortened for model input. No embeddings or model downloads occur.
+
+Imported text is explicitly delimited as untrusted evidence. The model has no tool interface. Application validation rejects unknown artifact IDs and excerpts absent from the exact supplied text. Classifications are observation, derivation or hypothesis. No match results in an explicit insufficiency response. Interpretations remain unverified even when citations match. Prompt-injection resistance is a layered control, not a guarantee of semantic correctness.
+
+Run `python -m scripts.test_local_ai` for a separate local synthetic test. Model timeouts are 180 seconds. Thinking models may use much of the allowance before producing a final answer; invalid/empty output returns an error rather than a fabricated result. Automated tests mock model output to exercise rejection paths independently of Ollama availability.

@@ -1,0 +1,7 @@
+category,sender,recipient,text,timestamp,direction,application
+sms,SYNTHETIC-A,SYNTHETIC-B,Please send PHP 1200 through GCash. Reference TEST-0001.,2026-01-01T10:00:00+08:00,outgoing,SMS
+sms,SYNTHETIC-B,SYNTHETIC-A,This is synthetic test data only.,2026-01-01T10:05:00+08:00,incoming,SMS
+call,SYNTHETIC-A,SYNTHETIC-B,Synthetic missed call,2026-01-01T11:00:00+08:00,missed,Phone
+contact,SYNTHETIC-A,,Synthetic contact A,,,
+device,SYNTHETIC-DEVICE,,Synthetic handset metadata,,,
+chat,SYNTHETIC-C,SYNTHETIC-A,Maya reference TEST-0002 - no transaction established,2026-01-02T09:00:00Z,incoming,Synthetic Chat
